@@ -54,17 +54,14 @@ for offer in offers.find():
         available_place['free_periods'] = free_periods
         free_periods_in_all_places.append(available_place)
 
-for available_place in free_periods_in_all_places:
-    print(available_place)
-    # sprawdzac czy obiekt ma wolny czas dla przedzialu klienta, jak tak to wypisac nazwe obiektu
+data_from_client = datetime.strptime('2020-10-29',date_time_format)
+data_to_client = datetime.strptime('2020-11-05',date_time_format)
 
-    #print(offers2)
 
-    # ogólnie teraz trzeba byłoby dorwać się do reezerwacji jakoś i pododawać je do tych 2 słowników ??? - ogólnie nw czy to dobry nawet pomysł ale przynajmniej nie ma duplikatów
-    # następnym krokiem będzie wyszukiwanie najbliższego terminu rezerwacji?
-
-#for x in offers.find('reservations'[{}]): #{'reservations': [{}]}):
-#    print(x)
-
-#for x in offers.reservations.find():
-#   print(x)
+for available_places in free_periods_in_all_places:
+    y = (available_places['free_periods'])
+    for avaible_period in available_places['free_periods']:
+        if data_from_client >= avaible_period['ready_from'] and data_from_client <=  avaible_period['ready_to'] and data_to_client <= avaible_period['ready_to']:
+            flag = 1 
+    if flag == 1:
+        print(available_places['id'])
