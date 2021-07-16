@@ -1,6 +1,5 @@
-from typing import FrozenSet
 from pymongo import MongoClient
-from datetime import date, datetime
+from datetime import datetime
 
 # Connect with db
 client = MongoClient("mongodb://127.0.0.1:27017")
