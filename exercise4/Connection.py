@@ -9,16 +9,9 @@ db = client["exercise4"]
 date_time_format = "%Y-%m-%d"
 
 # Data from user
-yearFrom = "2020"
-monthFrom = "10"
-dayFrom = "23"
-yearTo = "2020"
-monthTo = "10"
-dayTo = "23"
 
-
-data_from_client = datetime.strptime('2020-10-29', date_time_format)
-data_to_client = datetime.strptime('2020-11-05', date_time_format)
+data_from_client = datetime.strptime(input("Input arrival date (yyyy-mm-dd): "), date_time_format)
+data_to_client = datetime.strptime(input("Input departure date (yyyy-mm-dd): "), date_time_format)
 
 # collection choose
 offers = db["offers"]
@@ -59,6 +52,7 @@ for offer in offers.find():
         available_place['free_periods'] = free_periods
         free_periods_in_all_places.append(available_place)
 
+print("\nFound avaliable places:")
 places = db["places"]
 for available_place in free_periods_in_all_places:
     for avaible_period in available_place['free_periods']:
